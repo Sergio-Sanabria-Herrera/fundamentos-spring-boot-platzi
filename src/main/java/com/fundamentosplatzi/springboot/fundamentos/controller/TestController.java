@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
     @RequestMapping
     @ResponseBody
-    public ResponseEntity<String> function(){
+    public ResponseEntity<String> function() {
         return new ResponseEntity<>("Hello from controller un cambio con otro cambio", HttpStatus.OK);
     }
 

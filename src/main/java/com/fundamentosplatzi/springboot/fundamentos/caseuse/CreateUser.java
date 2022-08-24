@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CreateUser {
-    private UserService userService;
+    private final UserService userService;
 
     public CreateUser(UserService UserService) {
         this.userService = UserService;
     }
 
-    public  User save(User newUser) {
-        return userService.save (newUser);
+    public User save(User newUser) {
+        return userService.save(newUser);
     }
 }

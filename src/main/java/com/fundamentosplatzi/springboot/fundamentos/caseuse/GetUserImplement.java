@@ -5,8 +5,8 @@ import com.fundamentosplatzi.springboot.fundamentos.service.UserService;
 
 import java.util.List;
 
-public class GetUserImplement implements GetUser{
-    private UserService userService;
+public class GetUserImplement implements GetUser {
+    private final UserService userService;
 
     public GetUserImplement(UserService userService) {
         this.userService = userService;

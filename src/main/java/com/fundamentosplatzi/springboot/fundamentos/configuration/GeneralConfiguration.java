@@ -1,6 +1,5 @@
 package com.fundamentosplatzi.springboot.fundamentos.configuration;
 
-import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithDependencyImplement;
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithPropertiesImplement;
 import com.fundamentosplatzi.springboot.fundamentos.pojo.UserPojo;
@@ -39,17 +38,17 @@ public class GeneralConfiguration {
     private String password;
 
     @Bean
-    public MyBeanWithProperties function(){
+    public MyBeanWithProperties function() {
         return new MyBeanWithPropertiesImplement(name, apellido);
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName(driver);
         dataSourceBuilder.url(jdbcUrl);
         dataSourceBuilder.username(username);
         dataSourceBuilder.password(password);
-        return  dataSourceBuilder.build();
+        return dataSourceBuilder.build();
     }
 }

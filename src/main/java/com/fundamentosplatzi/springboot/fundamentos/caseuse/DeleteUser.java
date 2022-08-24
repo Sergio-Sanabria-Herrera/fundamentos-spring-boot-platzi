@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DeleteUser {
-    private UserService userService;
+    private final UserService userService;
 
     public DeleteUser(UserService UserService) {
         this.userService = UserService;

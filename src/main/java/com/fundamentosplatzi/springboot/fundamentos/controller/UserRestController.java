@@ -7,26 +7,22 @@ import com.fundamentosplatzi.springboot.fundamentos.caseuse.UpdateUser;
 import com.fundamentosplatzi.springboot.fundamentos.dto.UserDto;
 import com.fundamentosplatzi.springboot.fundamentos.entity.User;
 import com.fundamentosplatzi.springboot.fundamentos.repository.UserRepository;
-import org.hibernate.engine.jdbc.Size;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
-
 @RestController
 @RequestMapping(value = "/api/users")
 public class UserRestController {
     //CREATE, GET, DELETE, UPDATE
-    private GetUser getUser;
-    private CreateUser createUser;
-    private DeleteUser deleteUser;
+    private final GetUser getUser;
+    private final CreateUser createUser;
+    private final DeleteUser deleteUser;
     private UpdateUser updateUser;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserRestController(GetUser getUser, CreateUser createUser, DeleteUser deleteUser,
                               UpdateUser updateUse, UserRepository userRepository) {

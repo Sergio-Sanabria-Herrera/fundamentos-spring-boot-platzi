@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class CaseUseConfiguration {
 
     @Bean
-    GetUser getUser(UserService userService){
+    GetUser getUser(UserService userService) {
         return new GetUserImplement(userService);
     }
 }

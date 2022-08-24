@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyConfigurationBean {
     @Bean
-    public MyBean beanOperetion(){
+    public MyBean beanOperetion() {
         return new MyBean2Implement();
     }
 
@@ -18,6 +18,6 @@ public class MyConfigurationBean {
 
     @Bean
     public MyBeanWithDependency beanOperetionOperationWithDepencency(MyOperation myOperation) {
-            return new MyBeanWithDependencyImplement(myOperation);
+        return new MyBeanWithDependencyImplement(myOperation);
     }
 }

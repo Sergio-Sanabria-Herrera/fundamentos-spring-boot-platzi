@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.domain.Sort;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -25,14 +24,14 @@ public class Application implements CommandLineRunner {
 
     private final Log LOGGER = LogFactory.getLog(Application.class);
 
-    private ComponentDependency componentDependency;
-    private MyBean myBean;
+    private final ComponentDependency componentDependency;
+    private final MyBean myBean;
 
-    private MyBeanWithDependency myBeanWithDependency;
-    private MyBeanWithProperties myBeanWithProperties;
-    private UserPojo userPojo;
-    private UserRepository userRepository;
-    private UserService userservice;
+    private final MyBeanWithDependency myBeanWithDependency;
+    private final MyBeanWithProperties myBeanWithProperties;
+    private final UserPojo userPojo;
+    private final UserRepository userRepository;
+    private final UserService userservice;
 
 
     public Application(@Qualifier("componentTwoimplement") ComponentDependency componentDependency,
@@ -61,7 +60,7 @@ public class Application implements CommandLineRunner {
         saveWithErrorTransactional();
     }
 
-    private void saveWithErrorTransactional(){
+    private void saveWithErrorTransactional() {
         User test1 = new User("Test1Transactional1",
                 "TestTransactional1@domain.com", LocalDate.now());
 
@@ -77,12 +76,12 @@ public class Application implements CommandLineRunner {
         List<User> users = Arrays.asList(test1, test2, test3, test4);
         try {
             userservice.saveTransactional(users);
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.error("esta es una exeption dentro de del metodo transaccional " + e);
         }
 
         userservice.getAllUsers().stream()
-                .forEach(user->
+                .forEach(user ->
                         LOGGER.info("Este es el usuario dentro del metodo transaccional " + user));
     }
 
@@ -113,7 +112,7 @@ public class Application implements CommandLineRunner {
 
         userRepository
                 .findByBirthDateBetween(LocalDate.of(2021, 3, 1),
-                LocalDate.of(2021, 4, 2))
+                        LocalDate.of(2021, 4, 2))
                 .stream()
                 .forEach(user -> LOGGER.info("Usuarios con intervalos de fechas" + user));
 
@@ -122,9 +121,9 @@ public class Application implements CommandLineRunner {
                 .forEach(user -> LOGGER.info("usuarios encontrado con like y ordenado " + user));
 
         LOGGER.info("El usuario a partir del named parameter es: " + userRepository
-                        .getAllByBirthDateAndEmail(LocalDate.of(2021, 4, 21),
+                .getAllByBirthDateAndEmail(LocalDate.of(2021, 4, 21),
                         "Daniela@domain.com")
-                .orElseThrow(()-> new RuntimeException
+                .orElseThrow(() -> new RuntimeException
                         ("No se encontro el usuario apartir del named paramater")));
 
     }
