@@ -67,13 +67,13 @@ public class Application implements CommandLineRunner {
         User test2 = new User("Test2Transactional1",
                 "Test2Transactional1@domain.com", LocalDate.now());
 
-        User test3 = new User("Test3Transactional1",
-                "TestTransactional1@domain.com", LocalDate.now());
+//        User test3 = new User("Test3Transactional1",
+//                "TestTransactional1@domain.com", LocalDate.now());
 
         User test4 = new User("Test4Transactional1",
                 "Test4Transactional1@domain.com", LocalDate.now());
 
-        List<User> users = Arrays.asList(test1, test2, test3, test4);
+        List<User> users = Arrays.asList(test1, test2, test4);
         try {
             userservice.saveTransactional(users);
         } catch (Exception e) {

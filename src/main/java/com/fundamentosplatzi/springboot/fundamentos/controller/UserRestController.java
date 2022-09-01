@@ -7,6 +7,10 @@ import com.fundamentosplatzi.springboot.fundamentos.caseuse.UpdateUser;
 import com.fundamentosplatzi.springboot.fundamentos.dto.UserDto;
 import com.fundamentosplatzi.springboot.fundamentos.entity.User;
 import com.fundamentosplatzi.springboot.fundamentos.repository.UserRepository;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +39,8 @@ public class UserRestController {
     }
 
     @GetMapping("/")
+    @ApiOperation("Get user rest")
+    @ApiResponse(code = 200, message =  "ok")
     ResponseEntity<List<User>> get() {
         return ResponseEntity.ok(getUser.getAll());
 
@@ -46,8 +52,14 @@ public class UserRestController {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation("Delete user rest")
+    @ApiResponses({
+            @ApiResponse(code = 204, message = "ok"),
+            @ApiResponse(code = 404, message = "user rest no content"),
+    })
+    @ApiParam(value = "the id of the user rest", required = true, example = "7")
     ResponseEntity deleteUser(@PathVariable Long id) {
-        deleteUser.remove(id);
+                deleteUser.remove(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
